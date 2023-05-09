@@ -1,0 +1,284 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7pqi4ox4laye"]
+
+[ext_resource type="Script" path="res://Scripts/Movementgd.gd" id="1_rsqgw"]
+[ext_resource type="Script" path="res://Scripts/PointsManager.gd" id="1_sccgp"]
+[ext_resource type="Script" path="res://Scripts/VectorsManager.gd" id="3_1dtmt"]
+[ext_resource type="Script" path="res://Scripts/FiguresManager.gd" id="4_p880a"]
+[ext_resource type="Script" path="res://Scripts/FiguresPointsSwitcher.gd" id="5_6lcbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbi1x"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.372549, 0.713726, 0.666667)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywibv"]
+material = SubResource("StandardMaterial3D_tbi1x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nb70"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.576471, 1, 0.45098, 0.666667)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70lr5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.996078, 0, 0.372549, 0.666667)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="X" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-05, -0.01, 0, 1000, -4.37114e-10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ywibv")
+
+[node name="Y" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 1000, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("BoxMesh_ywibv")
+surface_material_override/0 = SubResource("StandardMaterial3D_7nb70")
+
+[node name="Z" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-10, -1000, 0, 0.01, -4.37114e-05, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = SubResource("BoxMesh_ywibv")
+surface_material_override/0 = SubResource("StandardMaterial3D_70lr5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 1, 0.75, 1)
+script = ExtResource("1_rsqgw")
+
+[node name="PointsManager" type="Node" parent="."]
+script = ExtResource("1_sccgp")
+
+[node name="VectorsManager" type="Node" parent="."]
+script = ExtResource("3_1dtmt")
+
+[node name="FiguresManager" type="Node" parent="."]
+script = ExtResource("4_p880a")
+
+[node name="Points" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 66.0
+offset_bottom = 35.0
+text = "Points"
+
+[node name="Grid" type="ItemList" parent="Points"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 162.0
+offset_bottom = 233.0
+
+[node name="Add" type="Button" parent="Points"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 238.0
+offset_right = 72.0
+offset_bottom = 269.0
+text = "Add"
+
+[node name="Figures" type="Label" parent="."]
+visible = false
+offset_left = 113.0
+offset_top = 6.0
+offset_right = 169.0
+offset_bottom = 35.0
+text = "Figures"
+
+[node name="Grid" type="ItemList" parent="Figures"]
+layout_mode = 0
+offset_left = -103.0
+offset_top = 32.0
+offset_right = 59.0
+offset_bottom = 233.0
+
+[node name="Add" type="Button" parent="Figures"]
+layout_mode = 0
+offset_left = -99.0
+offset_top = 238.0
+offset_right = -31.0
+offset_bottom = 269.0
+text = "Add"
+
+[node name="Shapes" type="Label" parent="Figures"]
+visible = false
+layout_mode = 0
+offset_left = 421.0
+offset_top = 104.0
+offset_right = 461.0
+offset_bottom = 144.0
+text = "Which figure?"
+
+[node name="Square" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 31.0
+offset_right = 135.0
+offset_bottom = 62.0
+text = "Square"
+
+[node name="Cube" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 69.0
+offset_right = 135.0
+offset_bottom = 100.0
+text = "Cube"
+
+[node name="Triangle" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 107.0
+offset_right = 136.0
+offset_bottom = 138.0
+text = "Triangle"
+
+[node name="Pyramide" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 146.0
+offset_right = 136.0
+offset_bottom = 177.0
+text = "Pyramide"
+
+[node name="FourSidedPyramide" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 184.0
+offset_right = 136.0
+offset_bottom = 215.0
+text = "Four Sided Pyramide"
+
+[node name="Hexagon" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 224.0
+offset_right = 136.0
+offset_bottom = 255.0
+text = "Hexagon
+"
+
+[node name="SixSidedPrism" type="Button" parent="Figures/Shapes"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 266.0
+offset_right = 136.0
+offset_bottom = 297.0
+text = "Six Sided Prism
+"
+
+[node name="Vectors" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 30.0
+grow_horizontal = 0
+text = "Vectors"
+horizontal_alignment = 2
+
+[node name="Grid" type="ItemList" parent="Vectors"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 162.0
+offset_bottom = 233.0
+
+[node name="Add" type="Button" parent="Vectors"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 238.0
+offset_right = 72.0
+offset_bottom = 269.0
+text = "Add"
+
+[node name="Points" type="Control" parent="Vectors"]
+visible = false
+layout_mode = 1
+anchor_left = -2.588
+anchor_top = 10.97
+anchor_right = -2.588
+anchor_bottom = 10.97
+offset_left = -141.568
+offset_top = -19.13
+offset_right = 170.432
+offset_bottom = 20.87
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="A" type="Label" parent="Vectors/Points"]
+layout_mode = 0
+offset_top = -67.0
+offset_right = 41.0
+offset_bottom = -41.0
+text = "From"
+
+[node name="ItemList" type="ItemList" parent="Vectors/Points/A"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 26.0
+offset_right = 108.0
+offset_bottom = 136.0
+
+[node name="B" type="Label" parent="Vectors/Points"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = -68.0
+offset_right = 203.0
+offset_bottom = -42.0
+text = "To"
+
+[node name="ItemList" type="ItemList" parent="Vectors/Points/B"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 26.0
+offset_right = 108.0
+offset_bottom = 135.0
+
+[node name="Create" type="Button" parent="Vectors/Points"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 82.0
+offset_right = 203.0
+offset_bottom = 111.0
+text = "Create"
+
+[node name="Cancel" type="Button" parent="Vectors/Points"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 120.0
+offset_right = 205.0
+offset_bottom = 151.0
+text = "Cancel"
+
+[node name="FiguresButton" type="Button" parent="."]
+offset_left = 109.0
+offset_top = 2.0
+offset_right = 173.0
+offset_bottom = 33.0
+text = "Figures"
+script = ExtResource("5_6lcbo")
+
+[node name="PointsButton" type="Button" parent="."]
+visible = false
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 33.0
+text = "Points"
+
+[connection signal="item_clicked" from="Points/Grid" to="PointsManager" method="_on_grid_item_clicked"]
+[connection signal="pressed" from="Points/Add" to="PointsManager" method="_on_add_pressed"]
+[connection signal="item_clicked" from="Figures/Grid" to="FiguresManager" method="_on_grid_item_clicked"]
+[connection signal="pressed" from="Figures/Add" to="FiguresManager" method="_on_add_pressed"]
+[connection signal="pressed" from="Figures/Shapes/Square" to="FiguresManager" method="_on_square_pressed"]
+[connection signal="pressed" from="Figures/Shapes/Cube" to="FiguresManager" method="_on_cube_pressed"]
+[connection signal="pressed" from="Figures/Shapes/Triangle" to="FiguresManager" method="_on_triangle_pressed"]
+[connection signal="pressed" from="Figures/Shapes/Pyramide" to="FiguresManager" method="_on_pyramide_pressed"]
+[connection signal="pressed" from="Figures/Shapes/FourSidedPyramide" to="FiguresManager" method="_on_four_sided_pyramide_pressed"]
+[connection signal="pressed" from="Figures/Shapes/Hexagon" to="FiguresManager" method="_on_hexagon_pressed"]
+[connection signal="pressed" from="Figures/Shapes/SixSidedPrism" to="FiguresManager" method="_on_six_sided_prism_pressed"]
+[connection signal="item_clicked" from="Vectors/Grid" to="VectorsManager" method="_on_grid_item_clicked"]
+[connection signal="pressed" from="Vectors/Add" to="VectorsManager" method="_on_add_pressed"]
+[connection signal="pressed" from="Vectors/Points/Create" to="VectorsManager" method="_on_create_pressed"]
+[connection signal="pressed" from="Vectors/Points/Cancel" to="VectorsManager" method="_on_cancel_pressed"]
+[connection signal="pressed" from="FiguresButton" to="FiguresButton" method="_on_pressed"]
+[connection signal="pressed" from="PointsButton" to="FiguresButton" method="_on_points_button_pressed"]

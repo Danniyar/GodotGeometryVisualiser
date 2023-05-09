@@ -1,0 +1,370 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch078gauouqsx"]
+
+[ext_resource type="Script" path="res://Scripts/Vector.gd" id="1_ioegy"]
+[ext_resource type="Script" path="res://Scripts/VectorActionList.gd" id="2_tul1n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ndwf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ox0d"]
+shading_mode = 0
+albedo_color = Color(0.294118, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cs7vp"]
+
+[node name="Vector" type="MeshInstance3D"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
+mesh = SubResource("BoxMesh_2ndwf")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ox0d")
+script = ExtResource("1_ioegy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_cs7vp")
+
+[node name="Info" type="Control" parent="."]
+process_mode = 4
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="CurObject" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -125.0
+offset_top = -143.0
+offset_right = -27.0
+offset_bottom = -117.0
+text = "Vector"
+horizontal_alignment = 2
+
+[node name="Length" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -127.0
+offset_top = -116.0
+offset_right = -26.0
+offset_bottom = -90.0
+text = "Length: "
+horizontal_alignment = 2
+
+[node name="Coordinates" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -105.0
+offset_top = -90.0
+offset_right = -26.0
+offset_bottom = -10.0
+text = "X: 
+Y: 
+Z:"
+horizontal_alignment = 2
+
+[node name="Close" type="Button" parent="Info"]
+layout_mode = 0
+offset_left = -215.0
+offset_top = -85.0
+offset_right = -114.0
+offset_bottom = -53.0
+text = "Close"
+
+[node name="Delete" type="Button" parent="Info"]
+layout_mode = 0
+offset_left = -215.0
+offset_top = -45.0
+offset_right = -114.0
+offset_bottom = -13.0
+text = "Delete
+"
+
+[node name="Actions" type="Button" parent="Info"]
+layout_mode = 0
+offset_left = -124.0
+offset_top = -182.0
+offset_right = -23.0
+offset_bottom = -150.0
+text = "Actions
+"
+
+[node name="ActionsList" type="Label" parent="Info"]
+visible = false
+layout_mode = 0
+offset_left = -676.0
+offset_top = -551.0
+offset_right = -484.0
+offset_bottom = -525.0
+text = "What do you want to do?"
+script = ExtResource("2_tul1n")
+
+[node name="Vectors" type="Control" parent="Info/ActionsList"]
+visible = false
+layout_mode = 1
+anchor_left = -2.588
+anchor_top = 10.97
+anchor_right = -2.588
+anchor_bottom = 10.97
+offset_left = 449.0
+offset_top = -174.0
+offset_right = 761.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="A" type="Label" parent="Info/ActionsList/Vectors"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = -75.0
+offset_right = 124.0
+offset_bottom = -49.0
+text = "Which vector"
+
+[node name="ItemList" type="ItemList" parent="Info/ActionsList/Vectors/A"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 26.0
+offset_right = 108.0
+offset_bottom = 136.0
+
+[node name="Actions" type="Control" parent="Info/ActionsList"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Angle" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 40.0
+offset_right = 216.0
+offset_bottom = 71.0
+text = "Angle between another vector"
+
+[node name="Sum" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 86.0
+offset_right = 217.0
+offset_bottom = 117.0
+text = "Sum with another vector"
+
+[node name="Sub" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 135.0
+offset_right = 217.0
+offset_bottom = 166.0
+text = "Sub with another vector"
+
+[node name="Mult" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 185.0
+offset_right = 231.0
+offset_bottom = 216.0
+text = "Multiplication with another vector"
+
+[node name="Div" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 235.0
+offset_right = 232.0
+offset_bottom = 266.0
+text = "Division with another vector"
+
+[node name="MultVal" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 282.0
+offset_right = 231.0
+offset_bottom = 313.0
+text = "Multiplication by value"
+
+[node name="DivVal" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 332.0
+offset_right = 232.0
+offset_bottom = 363.0
+text = "Division by value"
+
+[node name="Close" type="Button" parent="Info/ActionsList/Actions"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 380.0
+offset_right = 173.0
+offset_bottom = 411.0
+text = "Close"
+
+[node name="ActionDetails" type="Control" parent="Info/ActionsList"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Angle" type="Label" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 195.0
+offset_right = 86.0
+offset_bottom = 221.0
+text = "Angle:"
+
+[node name="AngleCancel" type="Button" parent="Info/ActionsList/ActionDetails/Angle"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 54.0
+offset_right = 118.0
+offset_bottom = 85.0
+text = "Cancel"
+
+[node name="SumAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 187.0
+offset_right = 156.0
+offset_bottom = 218.0
+text = "Add"
+
+[node name="SumCancel" type="Button" parent="Info/ActionsList/ActionDetails/SumAction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 75.0
+text = "Cancel"
+
+[node name="SubAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 187.0
+offset_right = 156.0
+offset_bottom = 218.0
+text = "Substract
+"
+
+[node name="SubCancel" type="Button" parent="Info/ActionsList/ActionDetails/SubAction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 75.0
+text = "Cancel"
+
+[node name="MultAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 187.0
+offset_right = 156.0
+offset_bottom = 218.0
+text = "Multiply
+"
+
+[node name="MultCancel" type="Button" parent="Info/ActionsList/ActionDetails/MultAction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 75.0
+text = "Cancel"
+
+[node name="DivAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 187.0
+offset_right = 156.0
+offset_bottom = 218.0
+text = "Divide
+"
+
+[node name="DivCancel" type="Button" parent="Info/ActionsList/ActionDetails/DivAction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 75.0
+text = "Cancel"
+
+[node name="MultValAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 87.0
+offset_right = 162.0
+offset_bottom = 118.0
+text = "Multiply on value
+"
+
+[node name="MultValCancel" type="Button" parent="Info/ActionsList/ActionDetails/MultValAction"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 43.0
+offset_right = 138.0
+offset_bottom = 74.0
+text = "Cancel"
+
+[node name="MultValue" type="SpinBox" parent="Info/ActionsList/ActionDetails/MultValAction"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = -39.0
+offset_right = 114.063
+offset_bottom = -8.0
+min_value = -100.0
+
+[node name="DivValAction" type="Button" parent="Info/ActionsList/ActionDetails"]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 87.0
+offset_right = 157.0
+offset_bottom = 118.0
+text = "Divide on value
+"
+
+[node name="DivValCancel" type="Button" parent="Info/ActionsList/ActionDetails/DivValAction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 75.0
+text = "Cancel"
+
+[node name="DivValue" type="SpinBox" parent="Info/ActionsList/ActionDetails/DivValAction"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = -39.0
+offset_right = 110.063
+offset_bottom = -8.0
+min_value = -100.0
+
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_static_body_3d_input_event" flags=18]
+[connection signal="pressed" from="Info/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Info/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Info/Actions" to="." method="_on_actions_pressed"]
+[connection signal="item_clicked" from="Info/ActionsList/Vectors/A/ItemList" to="Info/ActionsList" method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Angle" to="Info/ActionsList" method="_on_angle_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Sum" to="Info/ActionsList" method="_on_sum_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Sub" to="Info/ActionsList" method="_on_sub_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Mult" to="Info/ActionsList" method="_on_mult_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Div" to="Info/ActionsList" method="_on_div_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/MultVal" to="Info/ActionsList" method="_on_mult_val_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/DivVal" to="Info/ActionsList" method="_on_div_val_pressed"]
+[connection signal="pressed" from="Info/ActionsList/Actions/Close" to="Info/ActionsList" method="_on_close_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/Angle/AngleCancel" to="Info/ActionsList" method="_on_angle_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/SumAction" to="Info/ActionsList" method="_on_sum_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/SumAction/SumCancel" to="Info/ActionsList" method="_on_sum_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/SubAction" to="Info/ActionsList" method="_on_sub_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/SubAction/SubCancel" to="Info/ActionsList" method="_on_sub_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/MultAction" to="Info/ActionsList" method="_on_mult_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/MultAction/MultCancel" to="Info/ActionsList" method="_on_mult_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/DivAction" to="Info/ActionsList" method="_on_div_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/DivAction/DivCancel" to="Info/ActionsList" method="_on_div_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/MultValAction" to="Info/ActionsList" method="_on_mult_val_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/MultValAction/MultValCancel" to="Info/ActionsList" method="_on_mult_val_cancel_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/DivValAction" to="Info/ActionsList" method="_on_div_val_action_pressed"]
+[connection signal="pressed" from="Info/ActionsList/ActionDetails/DivValAction/DivValCancel" to="Info/ActionsList" method="_on_div_val_cancel_pressed"]
